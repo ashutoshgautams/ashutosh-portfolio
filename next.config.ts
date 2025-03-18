@@ -1,7 +1,19 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
-  /* config options here */
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  reactStrictMode: true,
+  images: {
+    domains: ['localhost'],
+    formats: ['image/avif', 'image/webp'],
+  },
+  webpack: (config: { module: { rules: { test: RegExp; use: string; }[]; }; }) => {
+    // Add support for importing markdown files
+    config.module.rules.push({
+      test: /\.md$/,
+      use: 'raw-loader',
+    });
+    
+    return config;
+  },
 };
 
-export default nextConfig;
+module.exports = nextConfig;

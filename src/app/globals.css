@@ -1,26 +1,124 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --foreground-rgb: 248, 250, 252;
+  --background-rgb: 18, 18, 18;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+  font-family: var(--font-sans);
+}
+
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply container mx-auto px-4 md:px-6 lg:px-8;
+  }
+  
+  .heading-1 {
+    @apply text-4xl md:text-5xl lg:text-6xl font-bold;
+  }
+  
+  .heading-2 {
+    @apply text-3xl md:text-4xl font-bold;
+  }
+  
+  .heading-3 {
+    @apply text-2xl md:text-3xl font-semibold;
+  }
+  
+  .button-primary {
+    @apply inline-block px-6 py-3 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-md transition-colors duration-300;
+  }
+  
+  .button-secondary {
+    @apply inline-block px-6 py-3 bg-secondary-600 hover:bg-secondary-700 text-white font-medium rounded-md transition-colors duration-300;
+  }
+  
+  .button-outline {
+    @apply inline-block px-6 py-3 bg-transparent border border-gray-700 hover:border-primary-500 text-light hover:text-primary-400 font-medium rounded-md transition-colors duration-300;
+  }
+  
+  /* Template Card Styles */
+  .template-card {
+    @apply bg-dark/50 backdrop-blur-lg rounded-lg overflow-hidden border border-gray-800 hover:border-primary-500 transition-all duration-300 group;
+  }
+  
+  .template-card-image {
+    @apply h-64 relative overflow-hidden;
+  }
+  
+  .template-card-content {
+    @apply p-6;
+  }
+  
+  .template-card-title {
+    @apply text-xl font-semibold mb-2 group-hover:text-primary-400 transition-colors duration-300;
+  }
+  
+  /* Blog Card Styles */
+  .blog-card {
+    @apply bg-dark/50 backdrop-blur-lg rounded-lg overflow-hidden border border-gray-800 hover:border-primary-500 transition-all duration-300 group;
+  }
+  
+  .blog-card-image {
+    @apply h-48 relative overflow-hidden;
+  }
+  
+  .blog-card-content {
+    @apply p-6;
+  }
+  
+  .blog-card-title {
+    @apply text-xl font-semibold mb-2 group-hover:text-primary-400 transition-colors duration-300;
+  }
+  
+  /* Form Styles */
+  .form-input {
+    @apply w-full bg-dark/50 border border-gray-700 rounded-md px-4 py-3 text-light focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 transition-colors;
+  }
+  
+  .form-textarea {
+    @apply w-full bg-dark/50 border border-gray-700 rounded-md px-4 py-3 text-light focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 transition-colors;
+  }
+  
+  .form-select {
+    @apply w-full bg-dark/50 border border-gray-700 rounded-md px-4 py-3 text-light focus:border-primary-500 focus:outline-none focus:ring-1 focus:ring-primary-500 transition-colors;
+  }
+  
+  /* Link Styles */
+  .link-primary {
+    @apply text-primary-400 hover:text-primary-300 font-medium transition-colors duration-300;
+  }
+  
+  /* Pricing Plan Styles */
+  .pricing-card {
+    @apply bg-dark/50 backdrop-blur-lg p-8 rounded-lg border border-gray-800 hover:border-primary-500 transition-all duration-300;
+  }
+  
+  .pricing-card-featured {
+    @apply bg-primary-900/30 backdrop-blur-lg p-8 rounded-lg border border-primary-600 transition-all duration-300;
+  }
+  
+  /* Dashboard Styles */
+  .dashboard-card {
+    @apply bg-dark/50 backdrop-blur-lg p-6 rounded-lg border border-gray-800;
+  }
+  
+  .dashboard-nav-item {
+    @apply flex items-center px-4 py-3 rounded-md text-light/70 hover:text-light hover:bg-dark/50 transition-colors duration-300;
+  }
+  
+  .dashboard-nav-item-active {
+    @apply flex items-center px-4 py-3 rounded-md text-primary-400 bg-primary-900/20 border-l-2 border-primary-500;
+  }
 }
